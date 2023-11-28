@@ -3,16 +3,16 @@
 ### Problem Statement:
 - Deploy a Streamlit Application that allow to upload a Business card and extract its information using Python library eacy OCR.
 - Extracted information should include details such as;
-     #### Company name
-     #### Card holder name 
-     #### Designation
-     #### Phone number
-     #### Email address
-     #### Website URL
-     #### Area
-     #### City
-     #### State
-     #### Pincode
+     #### - Company name
+     #### - Card holder name 
+     #### - Designation
+     #### - Phone number
+     #### - Email address
+     #### - Website URL
+     #### - Area
+     #### - City
+     #### - State
+     #### - Pincode
 - The extracted information then should be displayed in the application interface in a clean, organized manner and should easily allow user; 
 - To Alter and Update the Etracted information
 - To Store the Etracted and Updated information into a database along with the uploaded business card image
