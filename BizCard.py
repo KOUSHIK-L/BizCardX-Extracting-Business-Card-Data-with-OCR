@@ -1,6 +1,5 @@
-# Importing necessary libraries
 import pandas as pd 
-import numpy as np
+import numpy as npcd
 import re
 import streamlit as st
 from streamlit_option_menu import option_menu 
@@ -9,7 +8,7 @@ import easyocr
 from PIL import Image
 
 # Python and MySQL integration
-mydb = pymysql.connect(host = "127.0.0.1", user =enter_user_name, password =enter_password)
+mydb = pymysql.connect(host = "127.0.0.1", user ="root", password ="kk@sql")
 sql = mydb.cursor()
 sql.execute("CREATE DATABASE IF NOT EXISTS bizcard")
 sql.execute("USE bizcard")
@@ -98,7 +97,7 @@ select_image = {image1 :'Business Card-1',
                 image5 :'Business Card-5'}
 
 st.set_page_config(page_title='BizCardX', layout='wide')
-st.markdown(f'<h1 style="text-align:center; color: #6739B7">BizCardX <br> Extracting Business Card Data with OCR</h1>', unsafe_allow_html=True)
+st.markdown(f'<h1 style="text-align:center; color: #d9138a">BizCardX <br> Extracting Business Card Data with OCR</h1>', unsafe_allow_html=True)
 
 select_menu = option_menu(None, ["About BizCardX", "BizCard Extraction","Bizcard Updation", "BizCard Deletion"],
                        icons=["clipboard2-data", "cloud-download", "file-earmark-plus", "trash"],orientation="horizontal")
@@ -158,7 +157,7 @@ if select_menu == "BizCard Extraction":
         st.sidebar.image(Image.open(img), output_format="JPEG", use_column_width=True)
     
     with extract1:
-        st.subheader(':blue[In BizCard Extraction - Upload & Extract Section:]')
+        st.subheader('In BizCard Extraction - Upload & Extract Section:')
         st.markdown(' -> Select a Business Card image to be uploaded')
         st.markdown(' -> After the image gets uploaded it gets displayed here')
         st.markdown(' -> With the Image selection the BixCared extraction also take place with help of EacyOCR')
@@ -180,7 +179,7 @@ if select_menu == "BizCard Extraction":
 
             
     with extract2:
-        st.subheader(':blue[In BizCard Extraction - Alter & Store Section:]')
+        st.subheader('In BizCard Extraction - Alter & Store Section:')
         st.markdown(' -> The selected BizCard will be dispalyed for Reference')
         st.markdown(' -> Check for any wrongly processed information')
         st.markdown(' -> If any mismatch found alter the specific data and press enter')
@@ -220,8 +219,10 @@ if select_menu == "BizCard Extraction":
 
             alter, upload = st.columns(2)
             with alter:
+                st.write('')
                 Preview = st.button("**Preview Modified Data**")
             with upload:
+                st.write('')
                 Upload_to_db = st.button("**Store Data into Database**")
             if Preview:
                 df_card = df_image_details.drop(['Image'],axis=1)
@@ -249,7 +250,7 @@ if select_menu == "BizCard Extraction":
 
 
 if select_menu == "Bizcard Updation":
-    st.subheader(":blue[In BizCard Updation Section:]")
+    st.subheader("In BizCard Updation Section:")
     st.markdown(' -> Select a Card with its Company name for updation')
     st.markdown(' -> Change the card details to update')
     st.markdown(' -> Once changes done press the button to commit it into the Database')
@@ -300,7 +301,7 @@ if select_menu == "Bizcard Updation":
                 st.table(updated_df)
 
 if select_menu == "BizCard Deletion":
-    st.subheader(':blue[In BizCard Deletion section:]')
+    st.subheader('In BizCard Deletion section:')
     st.markdown(' -> The card Details Table from Database before and after deletion are displayed')
     st.markdown(' -> Select the table to be Droped from Database by chossing its respective Company Name')
     st.markdown(' -> Once selected click on the button to delete the table permanantly from database')
@@ -327,4 +328,5 @@ if select_menu == "BizCard Deletion":
             df_after = pd.read_sql_query('SELECT Company_name, Card_holder,  Designation, Phone_number, Email_id, Website, Area, City, State, Pincode FROM card_details',mydb)
             st.table(df_after)
 
-            st.title('Thank You !!!')
+            
+        st.title('Thank You !!!')
