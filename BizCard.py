@@ -8,7 +8,7 @@ import easyocr
 from PIL import Image
 
 # Python and MySQL integration
-mydb = pymysql.connect(host = "127.0.0.1", user ="root", password ="kk@sql")
+mydb = pymysql.connect(host = "127.0.0.1", user ="root", password =usepassword)
 sql = mydb.cursor()
 sql.execute("CREATE DATABASE IF NOT EXISTS bizcard")
 sql.execute("USE bizcard")
