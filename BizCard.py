@@ -1,3 +1,4 @@
+# Importing necessary libraries
 import pandas as pd 
 import numpy as npcd
 import re
@@ -8,7 +9,7 @@ import easyocr
 from PIL import Image
 
 # Python and MySQL integration
-mydb = pymysql.connect(host = "127.0.0.1", user ="root", password =usepassword)
+mydb = pymysql.connect(host = "127.0.0.1", user ="root", password ="kk@sql")
 sql = mydb.cursor()
 sql.execute("CREATE DATABASE IF NOT EXISTS bizcard")
 sql.execute("USE bizcard")
@@ -132,11 +133,11 @@ if select_menu == "About BizCardX":
 
     st.subheader('Problem Approach:')
     st.markdown('To Solve the Problem, the Approach has been made into different Sections and Steps')
-    st.markdown('- First section on Introdction to Problem Statement]')
-    st.markdown('- Further sections involve Steps approched in this solution]')
-    st.markdown(':red[ - BizCard Extraction - User selected BizCard will be uploaded and the information will be extracted]')
-    st.markdown(':red[ - BizCard Updation - User can update the stored information]')
-    st.markdown(':red[ - BizCard Deletion - User can delete the selected BizCard information from the database]')
+    st.markdown('- First section on Introdction to Problem Statement')
+    st.markdown('- Further sections involve Steps approched in this solution')
+    st.markdown('- :red[**BizCard Extraction**] - User selected BizCard will be uploaded and the information will be extracted')
+    st.markdown('- :red[**BizCard Updation**] - User can update the stored information')
+    st.markdown('- :red[**BizCard Deletion**] - User can delete the selected BizCard information from the database')
     st.markdown('- Last Section for Conclusion')  
 
     st.subheader('Tools and Technologies used in this Project involves;')
@@ -328,5 +329,15 @@ if select_menu == "BizCard Deletion":
             df_after = pd.read_sql_query('SELECT Company_name, Card_holder,  Designation, Phone_number, Email_id, Website, Area, City, State, Pincode FROM card_details',mydb)
             st.table(df_after)
 
+
+        
             
-        st.title('Thank You !!!')
+        st.title(':violet[Thank You !!!]')
+
+        st.subheader('**Project Outcomes:**')
+        st.markdown('- The project aimed to create a Streamlit application enabling users to upload business card images and extract key information using easyOCR.') 
+        st.markdown('- Extracted details included company name, card holder name, designation, mobile number, email, website URL, area, city, state, and pin code.') 
+        st.markdown('- The application featured a user-friendly interface for easy navigation.') 
+        st.markdown('- Users could also save extracted data, along with uploaded images, into a database capable of storing multiple entries.') 
+        st.markdown('- The project required skills in image processing, OCR, GUI development and database management.') 
+        st.markdown('- The final application served as a tool for efficiently managing business card information.')
